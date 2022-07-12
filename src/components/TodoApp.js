@@ -27,7 +27,7 @@ function TodoApp() {
   const addTask = (e) => {
     if (task !== "") {
       const taskDetails = {
-        id: Math.floor(Math.random() * 1000),
+        id: 1 + taskList.length,
         value: task,
         value2: task2,
         value3: task3,
@@ -37,6 +37,7 @@ function TodoApp() {
       };
       setTaskList([...taskList, taskDetails]);
     }
+
   };
 
   const deleteTask = (e, id) => {
@@ -46,8 +47,9 @@ function TodoApp() {
 
   const colorChange = (e, id) => {
     e.preventDefault();
-    setTaskList()
+    setTaskList([...taskList], [...taskList].find((item) => item.id === id).isCompleted = true)
   }
+
   return (
     <div className="todo">
       <input
@@ -85,19 +87,28 @@ function TodoApp() {
         Add Task
       </button>
       <div>
-        {taskList !== [] ? (
+        {[...taskList].length > 0 ? (
           <ul>
-            {taskList.map((element) => (
-                <li key={Math.floor(Math.random() * 1000)}>
-                name: {element.value}, 
-                task: {element.value2}, 
-                date:{element.value3},
-                start: {element.value4},
-                end: {element.value5},
-                <button onClick={e => deleteTask(e, element.id)} className="delete">
+            {[...taskList].map((element) => (
+              <li
+                key={Math.floor(Math.random() * 1000)}
+                className={element.isCompleted === true && "completedTask"}
+              >
+                name: {element.value}, task: {element.value2}, date:
+                {element.value3}, start: {element.value4}, end: {element.value5}
+                ,
+                <button
+                  onClick={(e) => deleteTask(e, element.id)}
+                  className="delete"
+                >
                   X
                 </button>
-                <button className="completed" onClick={colorChange}>V</button>
+                <button
+                  className="completed"
+                  onClick={(e) => colorChange(e, element.id)}
+                >
+                  V
+                </button>
               </li>
             ))}
           </ul>

@@ -67,18 +67,19 @@
   color: black;
 }
 
-.completedTask{  list-style: none;
-  margin-bottom: 4px;
-  background-color: red;
-  border: 2px solid black;
-  border-radius: 10px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 5px;
-  margin-left: -100px;
-  background-color: rgb(236, 236, 236, 0.6);
-  font-family: "Permanent Marker", cursive;
-  color: black;
+.completedTask { 
+  text-decoration: line-through;
+  list-style: line !important ;
+  margin-bottom: 4px !important ;
+  border: 2px solid black !important ;
+  border-radius: 10px !important ;
+  padding-bottom: 5px !important ;
+  padding-left: 10px !important ;
+  padding-right: 5px !important ;
+  margin-left: -100px !important ;
+  background-color: rgb(2, 255, 2) !important ;
+  font-family: "Permanent Marker", cursive !important ;
+  color: black !important ;
 }
 .todo ul li .delete {
   margin-top: 5px;
